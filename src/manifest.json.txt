@@ -1,0 +1,14 @@
+{
+	"manifest_version": 2,
+	"name": "SuperCaster",
+	"version": "1.0",
+	"description": "Allows more types of videos to be chromecasted",
+	"content_scripts": 
+	[
+		{
+			"matches": ["*://*/*"],
+			"js": ["content_script.js"],
+			"run_at": "document_end"
+		}
+	]
+}
