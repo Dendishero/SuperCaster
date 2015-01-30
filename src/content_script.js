@@ -640,7 +640,14 @@ function mediaCommandSuccessCallback(info) {
 
 }
 
-
+function getVideoTags(){
+	var myVidTags = document.getElementsByTagName("video");
+	if myVidTags.length != 0{
+		myVidTags.map( function(item) {
+			mediaURLs.push(item.src);
+		}
+	}
+}
 
 
 function getContentFromIframe(iFrameName)
