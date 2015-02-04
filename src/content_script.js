@@ -17,7 +17,7 @@ function loadScript(url, callback)
 }
 var findurls = function findUrlsFunc()
 {
-	var v = textNode.nodeValue;
+	var v = 5;
 }
 
 loadScript("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js", findurls);
@@ -642,10 +642,10 @@ function mediaCommandSuccessCallback(info) {
 
 function getVideoTags(){
 	var myVidTags = document.getElementsByTagName("video");
-	if myVidTags.length != 0{
+	if (myVidTags.length != 0) {
 		myVidTags.map( function(item) {
 			mediaURLs.push(item.src);
-		}
+		})
 	}
 }
 
