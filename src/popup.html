@@ -1,15 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html><head>
+<script src="popup.js"></script>
+</head>
 <body>
 <ul>
 	<li>
-		<button>Launch video</button>
+		<input type="text" name="customMediaURL" value="" size="70" id="customMediaURL">
 	</li>
-	<li>what</li>
-	<li>what</li>
-	<li>what</li>
-	<li>what</li>
-	<li>what</li>
-	<li>what</li>
+	<li><input type="submit" name="loadCustomMeida" value="Load Custom Media" onclick="loadCustomMedia();"></li>
+	<li><button for="launchApp" >Launch app</button></li>
+	<li><button onclick="stopApp()">Stop app</button></li>
+	<li><button id="playpauseresume" onclick="playMedia()">Play</button></li>
 </ul>
 </body>
 </html>

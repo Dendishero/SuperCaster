@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "SuperCaster",
-	"version": "1.0",
+	"version": "1.2",
 	"description": "Allows more types of videos to be chromecasted",
 	"content_scripts": 
 	[
@@ -11,6 +11,10 @@
 			"run_at": "document_end"
 		}
 	],
+	"background": {
+		"scripts": ["content_script.js"],
+		"persistent": false
+	},
 	"browser_action": {
 		"default_icon": "icon.png",
 		"default_popup":"popup.html"

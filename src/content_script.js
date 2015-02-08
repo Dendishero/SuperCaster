@@ -21,6 +21,19 @@ var findurls = function findUrlsFunc()
 }
 
 loadScript("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js", findurls);
+upload = function(fileName) {
+  console.log('Uploading', fileName);
+}
+// This function is called onload in the popup code
+function getPageDetails(callback) { 
+    // Inject the content script into the current page 
+    chrome.tabs.executeScript(null, { file: 'content.js' }); 
+    // Perform the callback when a message is received from the content script
+    chrome.runtime.onMessage.addListener(function(message)  { 
+        // Call the callback function
+        callback(message); 
+    }); 
+};
 
 
 /**
