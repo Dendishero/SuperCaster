@@ -1,3 +1,55 @@
+
+
+
+
+
+(function() {var chrome = window.chrome || {};
+chrome.cast = chrome.cast || {};
+chrome.cast.media = chrome.cast.media || {};
+chrome.cast.ApiBootstrap_ = function() {
+};
+chrome.cast.ApiBootstrap_.EXTENSION_IDS = ["boadgeojelhgndaghljhdicfkmllpafd", "dliochdbjfkdbacpmhlcpmleaejidimm", "hfaagokkkhdbgiakmmlclaapfelnkoah", "fmfcbgogabcbclcofgocippekhfcmgfj", "enhhojjnijigcajfphajepfemndkmdlo"];
+chrome.cast.ApiBootstrap_.findInstalledExtension_ = function(callback) {
+  chrome.cast.ApiBootstrap_.findInstalledExtensionHelper_(0, callback);
+};
+chrome.cast.ApiBootstrap_.findInstalledExtensionHelper_ = function(index, callback) {
+  index == chrome.cast.ApiBootstrap_.EXTENSION_IDS.length ? callback(null) : chrome.cast.ApiBootstrap_.isExtensionInstalled_(chrome.cast.ApiBootstrap_.EXTENSION_IDS[index], function(installed) {
+    installed ? callback(chrome.cast.ApiBootstrap_.EXTENSION_IDS[index]) : chrome.cast.ApiBootstrap_.findInstalledExtensionHelper_(index + 1, callback);
+  });
+};
+chrome.cast.ApiBootstrap_.getCastSenderUrl_ = function(extensionId) {
+  return "chrome-extension://" + extensionId + "/cast_sender.js";
+};
+chrome.cast.ApiBootstrap_.isExtensionInstalled_ = function(extensionId, callback) {
+  var xmlhttp = new XMLHttpRequest;
+  xmlhttp.onreadystatechange = function() {
+    4 == xmlhttp.readyState && 200 == xmlhttp.status && callback(!0);
+  };
+  xmlhttp.onerror = function() {
+    callback(!1);
+  };
+  xmlhttp.open("GET", chrome.cast.ApiBootstrap_.getCastSenderUrl_(extensionId), !0);
+  xmlhttp.send();
+};
+chrome.cast.ApiBootstrap_.findInstalledExtension_(function(extensionId) {
+  if (extensionId) {
+    console.log("Found cast extension: " + extensionId);
+    chrome.cast.extensionId = extensionId;
+    var apiScript = document.createElement("script");
+    apiScript.src = chrome.cast.ApiBootstrap_.getCastSenderUrl_(extensionId);
+    (document.head || document.documentElement).appendChild(apiScript);
+  } else {
+    var msg = "No cast extension found";
+    console.log(msg);
+    var callback = window.__onGCastApiAvailable;
+    callback && "function" == typeof callback && callback(!1, msg);
+  }
+});
+})();
+
+
+
+
 function loadScript(url, callback)
 {
     //stolen from http://goo.gl/Iwt7mn
@@ -15,6 +67,7 @@ function loadScript(url, callback)
     // Fire the loading
     head.appendChild(script);
 }
+
 var findurls = function findUrlsFunc()
 {
 	var v = 5;
@@ -328,12 +381,12 @@ function stopApp() {
 /**
  * load media specified by custom URL IMPORTANT
  */
-function loadCustomMedia() {
+/* function loadCustomMedia() {
   var customMediaURL = document.getElementById('customMediaURL').value;
   if (customMediaURL.length > 0) {
     loadMedia(customMediaURL);
   }
-}
+} */
 /**
  * load media specified by custom URL IMPORTANT
  */
@@ -662,7 +715,7 @@ function getVideoTags(){
 	}
 }
 
-
+localStorage['x_en'] = 1;
 function getContentFromIframe(iFrameName)
 {
  
@@ -674,26 +727,12 @@ function getContentFromIframe(iFrameName)
 }
 function getFrames()
 {
-
-var listofframes = document.getElementsByTagName("iframe");
-var scriptsiniframe = listofframes[0];
-var iframeDocument = scriptsiniframe ;
-console.log('log '+iframeDocument.src);
-console.log(iframeDocument);
+	var listofframes = document.getElementsByTagName("iframe");
+	var scriptsiniframe = listofframes[0];
+	var iframeDocument = scriptsiniframe ;
+	console.log('log '+iframeDocument.src);
+	console.log(iframeDocument);
 }
-chrome.runtime.onMessage.addListener(function(msg, sender, response) {
-    /* First, validate the message's structure */
-    if ((msg.from === 'popup') && (msg.subject === 'DOMInfo')) {
-        /* Collect the necessary data 
-         * (For your specific requirements `document.querySelectorAll(...)`
-         *  should be equivalent to jquery's `$(...)`) */
-        var domInfo = {
-            total:   document.querySelectorAll('*').length,
-            inputs:  document.querySelectorAll('input').length,
-            buttons: document.querySelectorAll('button').length
-        };
-        /* Directly respond to the sender (popup), 
-         * through the specified callback */
-        response(domInfo);
-    }
-});
+function backgroundFunction () {
+    return "hello from the background!"
+}

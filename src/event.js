@@ -8,3 +8,9 @@ function getPageDetails(callback) {
         callback(message); 
     }); 
 };
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse){
+       localStorage["total_elements"] = request.total_elements;
+    }
+);
