@@ -727,12 +727,13 @@ function getContentFromIframe(iFrameName)
 }
 function getFrames()
 {
-	var listofframes = document.getElementsByTagName("iframe");
+	var listofframes = document.body.getElementsByTagName("iframe");
 	var scriptsiniframe = listofframes[0];
 	var iframeDocument = scriptsiniframe ;
 	console.log('log '+iframeDocument.src);
 	console.log(iframeDocument);
 }
 function backgroundFunction () {
+	getFrames()
     return "hello from the background!"
 }
