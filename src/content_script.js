@@ -73,7 +73,7 @@ var findurls = function findUrlsFunc()
 	var v = 5;
 }
 
-loadScript("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js", findurls);
+//loadScript("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js", findurls);
 upload = function(fileName) {
   console.log('Uploading', fileName);
 }
