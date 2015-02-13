@@ -123,27 +123,15 @@ var progressFlag = 1;
 var mediaCurrentTime = 0;
 var session = null;
 var storedSession = null;
-var mediaURLs = [
+/* var mediaURLs = [
     'http://www.youtube.com/watch?feature=player_embedded&x-yt-cl=84838260&v=non&x-yt-ts=1422327029',
     'http://playbb.me/embed.php?w=718&h=438&vid=at/nw/absolute_duo_-_04.mp4',
     'http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4',
-    'http://commondatastorage.googleapis.com/gtv-videos-bucket/Google%20IO%202011%2045%20Min%20Walk%20Out.mp3'];
-var mediaTitles = [
-    'Big Buck Bunny',
-    'Elephant Dream',
-    'Tears of Steel',
-    'Reel 2012',
-    'Google I/O 2011 Audio'];
+    'http://commondatastorage.googleapis.com/gtv-videos-bucket/Google%20IO%202011%2045%20Min%20Walk%20Out.mp3']; */
 
-var mediaThumbs = [
-    'images/BigBuckBunny.jpg',
-    'images/ElephantsDream.jpg',
-    'images/TearsOfSteel.jpg',
-    'images/reel.jpg',
-    'images/google-io-2011.jpg'];
-var currentMediaURL = mediaURLs[0];
+/* var currentMediaURL = mediaURLs[0];
 var currentMediaTitle = mediaTitles[0];
-var currentMediaThumb = mediaThumbs[0];
+var currentMediaThumb = mediaThumbs[0]; */
 
 var timer = null;
 
@@ -295,7 +283,7 @@ function receiverListener(e) {
  * select a media URL
  * @param {string} m An index for media URL
  */
-function selectMedia(m) {
+/* function selectMedia(m) {
   console.log('media selected' + m);
   console.log('media selected' + m);
   currentMediaURL = mediaURLs[m];
@@ -303,7 +291,7 @@ function selectMedia(m) {
   currentMediaThumb = mediaThumbs[m];
   var playpauseresume = document.getElementById('playpauseresume');
   document.getElementById('thumb').src = MEDIA_SOURCE_ROOT + mediaThumbs[m];
-}
+} */
 
 /**
  * launch app and request session
@@ -706,14 +694,14 @@ function mediaCommandSuccessCallback(info) {
 
 }
 
-function getVideoTags(){
+/* function getVideoTags(){
 	var myVidTags = document.getElementsByTagName("video");
 	if (myVidTags.length != 0) {
 		myVidTags.map( function(item) {
 			mediaURLs.push(item.src);
 		})
 	}
-}
+} */
 
 localStorage['x_en'] = 1;
 function getContentFromIframe(iFrameName)
